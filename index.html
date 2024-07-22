@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="game">
+            <table>
+                <tr>
+                    <td id="t0"><button class="button" id="b0" value="0" onclick="mainGame('0')"></button></td>
+                    <td id="t1" style="padding-left:20px;"><button class="button" id="b1" value="1" onclick="mainGame('1')"></button></td>
+                    <td id="t2"><button class="button" id="b2" value="2" onclick="mainGame('2')"></button></td>
+                </tr>
+                <tr>
+                    <td id="t3"><button class="button" id="b3" value="3" onclick="mainGame('3')"></button></td>
+                    <td id="t4"><button class="button" id="b4" value="4" onclick="mainGame('4')"></button></td>
+                    <td id="t5"><button class="button" id="b5" value="5" onclick="mainGame('5')"></button></td>
+                </tr>
+                <tr>
+                    <td id="t6"><button class="button" id="b6" value="6" onclick="mainGame('6')"></button></td>
+                    <td id="t7"><button class="button" id="b7" value="7" onclick="mainGame('7')"></button></td>
+                    <td id="t8"><button class="button" id="b8" value="8" onclick="mainGame('8')"></button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="resutlmsg">
+            <span id="result"></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
