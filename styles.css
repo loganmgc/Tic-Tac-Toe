@@ -9,9 +9,13 @@ body {
 
 .container {
     width: 600px;
-    height: 600px;
+    height: 650px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     border-radius: 5%;
+}
+
+h2{
+    text-align: center;
 }
 
 .game {
@@ -21,6 +25,7 @@ body {
     background-image: url("img/table.png");
     background-size: cover;
     margin: 20px auto;
+    border-radius: 5%;
 }
 
 table {
@@ -41,7 +46,7 @@ td {
     background-position: center;
 }
 
-.button {
+.game .button {
     width: 110px;
     height: 110px;
     border-radius: 10%;
@@ -49,19 +54,46 @@ td {
     border: none;
 }
 
-button:hover {
+.button:hover {
     opacity: 0.5;
     cursor: pointer;
 }
-
-#resutlmsg {
+.endgame {
+    width: 550px;
+    height: 75px;
     display: flex;
+    justify-content: left;
+    align-items: center;
     margin: 50px auto;
-    justify-content: center;
+
+}
+#newgame {
+    border: 1px solid black;
+    border-radius: 20%;
+    width: 100px;
+    height: 30px;
+    background-color: #206833;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+    #newgame:hover {
+        cursor: pointer;
+        background-color: #60f7bb;
+        color: black;
+        border: 2px solid gray;
+        box-shadow: 0 0 10px rgba(0,0,0,0.9);
+    }
+#result-message-container {
+    justify-items: center;
+    align-items: center;
     border-radius: 25%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     width: 200px;
     font-size: 30px;
     padding: 10px;
     opacity: 0;
+}
+#result-message {
+    text-align: center;
+    width: 100%;
 }

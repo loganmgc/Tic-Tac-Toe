@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <div><h2>Tic Tac Toe</h2></div>
         <div class="game">
             <table>
                 <tr>
@@ -27,8 +28,13 @@
                 </tr>
             </table>
         </div>
-        <div id="resutlmsg">
-            <span id="result"></span>
+        <div class="endgame">
+            <div style="width: 150px;">
+                <button class="button" id="newgame" onclick="newGame()">New Game</button>
+            </div>
+            <div id="result-message-container">
+                <div id="result-message" ></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
