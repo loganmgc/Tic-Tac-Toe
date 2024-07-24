@@ -2,7 +2,7 @@ const images = [`img/o.png`, `img/x.png`];
 const mStyle = ['o', 'x'];
 let moves = ['', '', '', '', '', '', '', '', ''];
 let mCounter = 0;
-var button = document.getElementsByClassName('button');
+const button = document.getElementsByClassName('button');
 function mainGame(index) {
     let bgImage = document.getElementById('t' + index);
     document.getElementById('b' + index).setAttribute('hidden', true);
@@ -24,19 +24,48 @@ function mainGame(index) {
     }, 1500);
 }
 function cMove() {
-    while (true) {
-        var comMove = Math.floor(Math.random() * 9);
-        if (!cMoveControl(comMove)) continue;
-        break;
-    }
+    let comMove = moveDecision();
     document.getElementById('t' + comMove).style.backgroundImage = `url('${images[0]}')`;
     moves[comMove] = mStyle[0];
     document.getElementById('b' + comMove).hidden = true;
     mCounter++;
 }
-function cMoveControl(comMove) {
-    if (moves[comMove] == '') return true;
-    else return false;
+function moveDecision() {
+    if (mCounter === 1 && moves[4] === '') {
+        return 4;
+    }
+    const comMove = movePatterns();
+    if (comMove !== null) {
+        return comMove;
+    }
+    while (true) {
+        const randomMove = Math.floor(Math.random() * 9);
+        if (moves[randomMove] == '') {
+            return randomMove;
+        }
+    }
+}
+function movePatterns() {
+    const winPatterns = [
+        [1, 2, 0], [3, 6, 0], [4, 8, 0], [4, 7, 1], [0, 1, 2],
+        [4, 6, 2], [5, 8, 2], [4, 5, 3], [3, 4, 5], [0, 3, 6],
+        [2, 4, 6], [7, 8, 6], [1, 4, 7], [0, 4, 8], [2, 5, 8],
+        [6, 7, 8], [0, 2, 1], [0, 6, 3], [0, 8, 4], [1, 7, 4],
+        [2, 6, 4], [3, 5, 4], [2, 8, 5], [6, 8, 7]
+    ];
+    for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (moves[a] === 'o' && moves[a] === moves[b] && moves[c] === '') {
+            return c;
+        }
+    }
+    for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (moves[a] !== '' && moves[a] === moves[b] && moves[c] === '') {
+            return c;
+        }
+    }
+    return null;
 }
 function determineWinner() {
     const winner = checkWin();
@@ -82,8 +111,8 @@ function newGame() {
         moves[i] = '';
         document.getElementById('b' + i).removeAttribute('hidden');
         document.getElementById('t' + i).style.backgroundImage = '';
-        button[i].disabled = false;
     }
+    disableButtons(false);
     document.getElementById('result-message-container').style.opacity = 0;
     mCounter = 0;
 }
